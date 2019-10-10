@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Return Quotient</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* The popup form - hidden by default */
+    .form-popup {
+      border-radius: 20px;
+      display: flex;
+      flex-direction: row;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(255, 255, 255);
+      z-index: 9;
+      height: 530px;
+      width: 1200px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* product grid card design */
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      background-color: white;
+      margin: 1%;
+      border-radius: 20px;
+      transition: transform .5s;
+    }
+
+    /* for rq value tag */
+    .centered {
+      margin-left: 12px;
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* for the shadow in nav bar */
+    .one-edge-shadow {
+      box-shadow: 0 8px 6px -6px black;
+    }
+
+    /* /* for new nav login dropdown */
+    @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
+
+    /* Fixed navbar */
+    body {
+      padding-top: 100px;
+    }
+
+    /* General sizing */
+    ul.dropdown-lr {
+      width: 300px;
+    }
+
+    /* mobile fix */
+    @media (max-width: 768px) {
+      .dropdown-lr h3 {
+        color: #eee;
+      }
+
+      .dropdown-lr label {
+        color: #eee;
+      }
+    }
+
+    /* for text in nav */
+    .link {
+      margin-top: 17px;
+      background-color: none;
+      color: black;
+    }
+
+    datalist {
+      display: none;
+    }
+
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial;
+    }
+
+    /* Center website */
+    .main {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 50px;
+      word-break: break-all;
+    }
+
+    .row {
+      margin: 8px -16px;
+    }
+
+    /* Add padding BETWEEN each column */
+    .row,
+    .row>.column {
+      padding: 8px;
+    }
+
+    /* Create four equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 25%;
+    }
+
+    /* Clear floats after rows */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Content */
+    .content {
+      background-color: white;
+      padding: 10px;
+    }
+
+    /* Responsive layout - makes a two column-layout instead of four columns */
+    @media screen and (max-width: 900px) {
+      .column {
+        width: 50%;
+      }
+    }
+
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+
+
+
+    .block2 {
+      color: white;
+      width: 40px;
+      font-size: 10px;
+      position: absolute;
+      top: 20px;
+      left: -11px;
+    }
+
+    .block1 {
+      width: 100px;
+      position: relative;
+    }
+
+    .block1 .tooltiptext {
+      visibility: hidden;
+      width: 320px;
+      background-color: #E34594;
+      color: white;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1;
+      top: 120px;
+      left: 80%;
+      /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .block1 .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 100%;
+      margin-top: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent #E34594 transparent transparent;
+    }
+
+    .block1:hover .tooltiptext {
+      visibility: visible;
+      opacity: .8;
+    }
+
+
+    /* for the searching */
+    .typeahead,
+    .tt-query,
+    .tt-hint {
+      border: 2px solid #CCCCCC;
+      border-radius: 12px;
+      font-size: 16px;
+      /* Set input font size */
+      height: 30px;
+      line-height: 30px;
+      outline: medium none;
+      width: 396px;
+    }
+
+    .typeahead {
+      background-color: #FFFFFF;
+    }
+
+    .typeahead:focus {
+      border: 2px solid #0097CF;
+    }
+
+    .tt-query {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    }
+
+    .tt-hint {
+      color: #999999;
+    }
+
+    .tt-menu {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 12px;
+      padding: 8px 0;
+      width: 302px;
+    }
+
+    .tt-suggestion {
+      font-size: 22px;
+      /* Set suggestion dropdown font size */
+      padding: 3px 20px;
+    }
+
+    .tt-suggestion:hover {
+      cursor: pointer;
+      background-color: #0097CF;
+      color: #FFFFFF;
+    }
+
+    .tt-suggestion p {
+      margin: 0;
+    }
+
+    /* for the rq switch */
+    .onoffswitch {
+      position: relative;
+      width: 60px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    .onoffswitch-checkbox {
+      display: none;
+    }
+
+    .onoffswitch-label {
+      display: block;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid #999999;
+      border-radius: 50px;
+    }
+
+    .onoffswitch-inner {
+      display: block;
+      width: 200%;
+      margin-left: -100%;
+      transition: margin 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-inner:before,
+    .onoffswitch-inner:after {
+      display: block;
+      float: left;
+      width: 50%;
+      height: 18px;
+      padding: 0;
+      line-height: 18px;
+      font-size: 14px;
+      color: white;
+      font-family: Trebuchet, Arial, sans-serif;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+
+    .onoffswitch-inner:before {
+      content: "RQ";
+      padding-left: 10px;
+      background-color: #E34594;
+      color: #FFFFFF;
+    }
+
+    .onoffswitch-inner:after {
+      content: "";
+      padding-right: 10px;
+      background-color: #EEEEEE;
+      color: #999999;
+      text-align: right;
+    }
+
+    .onoffswitch-switch {
+      display: block;
+      width: 24px;
+      margin: -3px;
+      background: #FFFFFF;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 38px;
+      border: 2px solid #999999;
+      border-radius: 50px;
+      transition: all 0.3s ease-in 0s;
+    }
+
+    .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+      margin-left: 0;
+    }
+
+    .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+      right: 0px;
+    }
+
+    /* pagination in the end */
+    .pagination {
+      display: inline-block;
+      font-size: 180%;
+      margin-top: 80px;
+      margin-left: 30%;
+    }
+
+    .pagination a {
+      color: black;
+      float: left;
+      padding: 8px 25px;
+      text-decoration: none;
+    }
+
+    .pagination a.active {
+      background-color: #E34594;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .pagination a:hover:not(.active) {
+      background-color: #ddd;
+      border-radius: 5px;
+      transform: scale(1.5)
+    }
+  </style>
+</head>
+
+<body style="background-color: white">
+  <script>
+    document.write(
+      '<script src="http://' +
+      (location.host || "localhost").split(":")[0] +
+      ':35729/livereload.js?snipver=1"></' +
+      "script>"
+    );
+  </script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/typeahead.js"></script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Defining the local dataset
+      var cars = ['Tops in Ethnic Wear', 'Tops in Western wear', 'Tops', 'Tops for women', 'tote bags', 'Tommy hilfiger watches', '1.5 ton split ac', 'Tops in Fusion Beats', 'Tops in Nauti Nati'];
+
+      // Constructing the suggestion engine
+      var cars = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: cars
+      });
+
+      // Initializing the typeahead
+      $('.typeahead').typeahead({
+        hint: true,
+        highlight: true, /* Enable substring highlighting */
+        minLength: 1 /* Specify minimum characters required for showing result */
+      },
+        {
+          name: 'cars',
+          source: cars
+        });
+    });  
+  </script>
+
+  <script>
+    $('.block2').hide();
+    var status = false
+    let datax = []
+    let rate = ``
+    $.get(`/products`, function (data) {
+      datax = data;
+      console.log("value for server: " + data);
+      let lines = "";
+      let x = "";
+
+
+      data.sort(function (a, b) { return a.id - b.id });
+      data.forEach(pro => {
+        rate = ``
+        // code for rating 
+        if (pro.rating == 0) {
+          rate = `<img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+        else if (pro.rating == 1) {
+          rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+        else if (pro.rating == 2) {
+          rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+        else if (pro.rating == 3) {
+          rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+        else if (pro.rating == 4) {
+          rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+        else if (pro.rating == 5) {
+          rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+        }
+
+
+        lines +=
+          `<div onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="block1 column card" style="height:425px;width:240px;" >
+              <img
+                src=`+ pro.images[0].url + `
+                style="width:100%;border-radius: 20px 20px 0px 0px;height:305px"
+              />
+              <img id="book_mark_`+ pro.id + `" src="assets/bookmark_img.png" width="35" height="35" style="margin-left:195px;margin-top: -75px;" onclick="change_book('book_mark_` + pro.id + `')">
+              <b><p style="font-size: 16px;margin-left:12px;margin-top: -12px;">`+ pro.name + `</p></b>
+              <p style="font-size: 13px;margin-left:12px;margin-top: -5px;color:#8F8F8F">`+ pro.description + `</p>
+              <p style="font-size: 18px;margin-left:12px;margin-top: -7px;">`+ pro.price.currencyIsoCode + `` + pro.price.value + `</p>
+              <p style="font-size: 18px;margin-left:49px;margin-top: -34px;color:#8F8F8F"><strike>`+ pro.price.currencyIsoCode + `` + (pro.price.value + 20.00) + `</strike></p>
+              `+ rate + `
+              <img src="assets/buy_now.png" width="64" height="39" style="margin-left:45px;margin-top: -15px;" onclick="popup_fn(event,'`+ pro.id + `')">
+              <img src="assets/bag.png" width="30" height="30" style="margin-left:4px;margin-top: -15px;">
+          </div>`;
+        document.getElementById("grid").innerHTML = lines;
+      });
+    });
+
+
+    function changeRQ() {
+      let lines = ""
+      if (document.getElementById("myonoffswitch").checked == true) {
+        datax.sort(function (a, b) { return a.RQ - b.RQ });
+        datax.forEach(pro => {
+          rate = ``
+          // code for rating 
+          if (pro.rating == 0) {
+            rate = `<img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 1) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 2) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 3) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 4) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 5) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          let c = 1
+          // let reason_array = []
+          // pro.reason.forEach(r => {
+          //   reason_array.push((c++) + `. ` + r)
+          // })
+          let reasons = '<ul><li style="margin-left:-20px;">' + pro.reason.join(`</li><br><li style="margin-left:-20px;">`); + '</li></ul>';
+          lines +=
+            ` <div onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="block1 column card" style="height:425px;width:240px;" >
+              <img
+                src=`+ pro.images[0].url + `
+                style="width:100%;border-radius: 20px 20px 0px 0px;height:305px"
+              />
+              <img id="book_mark_`+ pro.id + `" src="assets/bookmark_img.png" width="35" height="35" style="margin-left:195px;margin-top: -75px;" onclick="change_book('book_mark_` + pro.id + `')">
+              <b><p style="font-size: 15px;margin-left:12px;margin-top: -12px;">`+ pro.name + `</p></b>
+              <p style="font-size: 12px;margin-left:12px;margin-top: -5px;color:#8F8F8F">`+ pro.description + `</p>
+              <p style="font-size: 17px;margin-left:12px;margin-top: -7px;">`+ pro.price.currencyIsoCode + `` + pro.price.value + `</p>
+              <p style="font-size: 17px;margin-left:49px;margin-top: -34px;color:#8F8F8F"><strike>`+ pro.price.currencyIsoCode + `` + (pro.price.value + 20) + `</strike></p>
+              `+ rate + `
+              <img src="assets/buy_now.png" width="64" height="39" style="margin-left:45px;margin-top: -15px;" onclick="popup_fn(event,'`+ pro.id + `')">
+              <img src="assets/bag.png" width="30" height="30" style="margin-left:4px;margin-top: -15px;">
+           <div class='block2'  > <img src="assets/rq_back.png" alt="Girl in a jacket" width="67" height="36"> <div class="centered"><p style="font-size:13px">RQ:`+ pro.RQ + `</p></div></div>
+           <div id="reason" class="tooltiptext">`+ reasons + `</div>
+          </div>`;
+          document.getElementById("grid").innerHTML = lines;
+        });
+      }
+      else {
+        datax.sort(function (a, b) { return a.id - b.id });
+        datax.forEach(pro => {
+          rate = ``
+          // code for rating 
+          if (pro.rating == 0) {
+            rate = `<img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 1) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 2) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 3) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 4) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (pro.rating == 5) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:12px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          lines +=
+            `<div onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="block1 column card" style="height:425px;width:240px;" >
+              <img
+                src=`+ pro.images[0].url + `
+                style="width:100%;border-radius: 20px 20px 0px 0px;height:305px"
+              />
+              <img id="book_mark_`+ pro.id + `" src="assets/bookmark_img.png" width="35" height="35" style="margin-left:195px;margin-top: -75px;" onclick="change_book('book_mark_` + pro.id + `')">
+              <b><p style="font-size: 15px;margin-left:12px;margin-top: -12px;">`+ pro.name + `</p></b>
+              <p style="font-size: 12px;margin-left:12px;margin-top: -5px;color:#8F8F8F">`+ pro.description + `</p>
+              <p style="font-size: 17px;margin-left:12px;margin-top: -7px;">`+ pro.price.currencyIsoCode + `` + pro.price.value + `</p>
+              <p style="font-size: 17px;margin-left:49px;margin-top: -34px;color:#8F8F8F"><strike>`+ pro.price.currencyIsoCode + `` + (pro.price.value + 20) + `</strike></p>
+              `+ rate + `
+              <img src="assets/buy_now.png" width="64" height="39" style="margin-left:45px;margin-top: -15px;" onclick="popup_fn(event,'`+ pro.id + `')">
+              <img src="assets/bag.png" width="30" height="30" style="margin-left:4px;margin-top: -15px;">
+          </div>`;
+          document.getElementById("grid").innerHTML = lines;
+        });
+      }
+    }
+
+    // for shuffling the array 
+    function shuffle(array) {
+      var currentIndex = array.length, temporaryValue, randomIndex;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+
+    //for pop up
+    function popup_fn(event, x) {
+      //console.log(`${event}, ${x}`)
+      event.stopPropagation()
+      datax.sort(function (a, b) { return a.id - b.id });  //to reset the dataset according to id
+      let clicked = datax.filter((datax) => datax.id == x)
+      let less_rq_pro = datax.filter((datax) => datax.RQ < clicked[0].RQ)
+      let data_sort = datax.sort(function (a, b) { return a.RQ - b.RQ });
+      data_sort = data_sort.filter((data_sort) => data_sort.id != clicked[0].id)
+      if (less_rq_pro.length > 4) {
+        data_sort = []
+        less_rq_pro = shuffle(less_rq_pro)
+        less_rq_pro = less_rq_pro.slice(0, 4);
+        data_sort = less_rq_pro.sort(function (a, b) { return a.RQ - b.RQ });
+      }
+
+      var i
+      let material = ``
+      let popup = ``
+      if ((document.getElementById("myonoffswitch").checked == true) && less_rq_pro.length >= 3) { //checking RQ on or off
+        for (i = 0; i < 4; i++) {
+          rate = ``
+          // code for rating 
+          if (data_sort[i].rating == 0) {
+            rate = `<img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (data_sort[i].rating == 1) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (data_sort[i].rating == 2) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (data_sort[i].rating == 3) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (data_sort[i].rating == 4) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_unfilled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          else if (data_sort[i].rating == 5) {
+            rate = `<img src="assets/star_filled.png" width="10" height="10" style="margin-left:10px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              <img src="assets/star_filled.png" width="10" height="10" style="margin-left:1.2px;margin-top: -15px;">
+              `
+          }
+          material += `<div  onmouseover="bigImg_pop(this)" onmouseout="normalImg_pop(this)" class="block1 column card" style="height:355px;width:200px;" >
+              <img
+                src=`+ data_sort[i].images[0].url + `
+                style="width:100%;border-radius: 20px 20px 0px 0px;"
+              />
+              <img id="book_mark_`+ data_sort[i].id + `_pop" src="assets/bookmark_img.png" width="30" height="30" style="margin-left:145px;margin-top: -65px;" onclick="change_book('book_mark_` + data_sort[i].id + `_pop')">
+              <b><p style="font-size: 15px;margin-left:10px;margin-top: -12px;">`+ data_sort[i].name + `</p></b>
+              <p style="font-size: 12px;margin-left:10px;margin-top: -5px;color:#8F8F8F">`+ data_sort[i].description + `</p>
+              <p style="font-size: 17px;margin-left:10px;margin-top: -7px;">`+ data_sort[i].price.currencyIsoCode + `` + data_sort[i].price.value + `</p>
+              <p style="font-size: 17px;margin-left:47px;margin-top: -34px;color:#8F8F8F"><strike>`+ data_sort[i].price.currencyIsoCode + `` + (data_sort[i].price.value + 20) + `</strike></p>
+              `+ rate + `
+              <img src="assets/buy_now.png" width="60" height="35" style="margin-left:9px;margin-top: -15px;" onclick="popup_popup_fn()">
+              <img src="assets/bag.png" width="30" height="30" style="margin-left:-5px;margin-top: -15px;">
+              <div class='block2'  > <img src="assets/rq_back.png" alt="Girl in a jacket" width="67" height="36"> <div class="centered"><p style="font-size:13px">RQ:`+ data_sort[i].RQ + `</p></div></div>
+           </div>`
+        }
+        popup =
+          `<div class="form-popup" id="myForm">
+          <img src="assets/1_3.png" width="100" height="80" style="margin-left:30px; margin-top:250px;position:absolute" >
+          <img src="assets/next_prev.png" width="100" height="80" style="margin-left:1060px; margin-top:250px;position:absolute" >
+          <p style="font-size:25px;font-family:rubic;margin-left:300px; margin-top:28px;position:absolute">"We have an exclusive varieties of option curated for you"</p>
+         <img src="assets/cross.png" width="30" height="30" style="margin-left:1160px; margin-top:18px;position:absolute" onclick="popup_close()">
+         <div style="display:flex; margin-top:100px;margin-left:190px">
+         `+ material + `
+         </div>
+         <img src="assets/skip.png" width="50" height="40" style="margin-left:1100px; margin-top:450px;position:absolute" onclick="popup_popup_fn()">
+         </div>`
+      }
+      else {
+        material = `<img src="assets/cart2.gif" width="800px" height="355px" >`
+        popup =
+          `<div class="form-popup" id="myForm">
+          <p style="font-size:25px;font-family:rubic;margin-left:240px; margin-top:28px;position:absolute">"Additional Bank offers, if applicable, can be applied during payment.<br>  Cashback, if any, will be credited post 90 days of placing the order"</p>
+         <img src="assets/cross.png" width="30" height="30" style="margin-left:1160px; margin-top:18px;position:absolute" onclick="popup_close()">
+         <div style="display:flex; margin-top:100px;margin:auto;">
+         `+ material + `
+         </div>
+         <p style="font-size:33px;font-family:rubic;margin-left:470px; margin-top:450px;position:absolute"><b>Item added to your cart</b></p>
+         </div>`
+
+      }
+      document.getElementById("pop").innerHTML = popup;
+      document.getElementById("bg_image").style.filter = "blur(8px)";
+
+    }
+
+    function popup_popup_fn() {
+      let material = ``
+      let popup = ``
+      material = `<img src="assets/cart2.gif" width="800px" height="355px" >`
+      popup =
+        `<div class="form-popup" id="myForm">
+          <p style="font-size:25px;font-family:rubic;margin-left:240px; margin-top:28px;position:absolute">"Additional Bank offers, if applicable, can be applied during payment.<br>Cashback, if any, will be credited post 90 days of placing the order"</p>
+         <img src="assets/cross.png" width="30" height="30" style="margin-left:1160px; margin-top:18px;position:absolute" onclick="popup_close()">
+         <div style="display:flex; margin-top:100px;margin:auto;">
+         `+ material + `
+         </div>
+         <p style="font-size:33px;font-family:rubic;margin-left:470px; margin-top:450px;position:absolute"><b>Item added to your cart</b></p>
+         </div>`
+      document.getElementById("pop").innerHTML = popup;
+      document.getElementById("bg_image").style.filter = "blur(8px)";
+
+    }
+    function change_book(id) {
+      if (document.getElementById(id).src == "http://localhost:3001/assets/bookmark_img.png") {
+        document.getElementById(id).src = "assets/bookmark_active.png"
+      }
+      else {
+        document.getElementById(id).src = "assets/bookmark_img.png"
+      }
+    }
+
+    // functions for resizing the product cards 
+    function bigImg_pop(x) {
+      x.style.transform = "scale(1.12)";
+      x.style.zIndex = "2";
+    }
+    function normalImg_pop(x) {
+      x.style.transform = "scale(1)";
+      x.style.zIndex = "1";
+    }
+    function bigImg(x) {
+      x.style.transform = "scale(1.1)";
+      x.style.zIndex = "2";
+    }
+    function normalImg(x) {
+      x.style.transform = "scale(1)";
+      x.style.zIndex = "1";
+    }
+
+    // function for closing the popup
+    function popup_close() {
+      document.getElementById("myForm").style.display = "none";
+      document.getElementById("bg_image").style.filter = "blur(0px)";
+    }
+    function close_pop_outside() {
+      popup_close()
+    }
+
+  </script>
+
+  <link href="/animate.css" rel="stylesheet">
+  <nav class="navbar  navbar-fixed-top one-edge-shadow" style="background-color: white;" role="navigation">
+    <!-- <div class="container-fluid" style="margin-left: 20%"> -->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="home.html"><img src="/assets/logo.png" alt="Girl in a jacket" width="170" height="65"
+            style="margin-top: -3px"></a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" style="margin-top: 2px">
+          <li class="active"><a>
+              <div class="link">
+                <p style="font-size: 18px">MEN</p>
+              </div>
+            </a></li>
+          <li><a href="tops.html">
+              <div class="link">
+                <p style="font-size: 18px">WOMEN</p>
+              </div>
+            </a></li>
+          <li>
+            <a>
+              <div class="link">
+                <p style="font-size: 18px">ACCSSORIES</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="link">
+                <p style="font-size: 18px">GIFTS</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- <ul class="nav navbar-nav navbar-right" style="margin-right: 20%"> -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <form class="form-inline my-2 my-lg-0 link" style="float:right;margin-top: 24px;margin-right: 195px;">
+              <input class="form-control mr-sm-2 typeahead tt-query" placeholder="Search" type="text" autocomplete="off"
+                spellcheck="false" />
+              <!-- <button onclick="goTops()" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              </button> -->
+              <img type="submit" onclick="goTops()" src="assets/search.png" alt="Girl in a jacket" width="25"
+                height="28" style="margin-top: 5px">
+
+            </form>
+          <li>
+            <div class="onoffswitch" style="margin-top: 31px; margin-left: -170px;">
+              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                onclick="changeRQ()">
+              <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+              </label>
+            </div>
+          </li>
+          <li>
+            <a style="margin-top: 0px;margin-left: -94px;height: 80px;width: 70px">
+              <img src="assets/cart.png" alt="Girl in a jacket" width="42" height="43" style="margin-top: 5px;"></a>
+            </a>
+          </li>
+          <li>
+            <a style=" margin-top: 0px;margin-left: -26px;height: 80px;">
+              <img src="assets/bookmark_active.png" alt="Girl in a jacket" width="42" height="43"
+                style="margin-top: 5px;"></a>
+            </a>
+          </li>
+          <li>
+            <a href="http://phpoll.com/login" data-toggle="dropdown" style="width: 60px;margin-right: 12px;"> <img
+                id="user" src="assets/profile.png" alt="Girl in a jacket" width="42" height="43"
+                style="margin-top: 5px;margin-left: -7px;"></a>
+            <ul class="dropdown-menu dropdown-lr animated slideInRight" role="menu">
+              <div class="col-lg-12">
+                <div>
+                  <h3><b style="color: #E34594">Login</b>
+                    <a>
+                      <p style="display:inline; margin-left:24px;opacity:0.29;color: black"> Sign up</p>
+                    </a>
+                  </h3>
+
+                </div>
+                <form id="ajax-login-form" action="http://phpoll.com/login/process" method="post" role="form"
+                  autocomplete="off">
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                      placeholder="Email" value="" autocomplete="off">
+                  </div>
+
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                      placeholder="Password" autocomplete="off">
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <input type="checkbox" tabindex="3" name="remember" id="remember">
+                        <label for="remember"> Remember Me</label>
+                      </div>
+                      <div class="col-xs-6 pull-right">
+                        <a class="forgot-password" style="color: #E34594">Forgot Password?</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="text-center">
+                          <input type="button" name="login-submit" id="login-submit"
+                            class="form-control btn btn-success" value="Log In"
+                            style="background: #E34594; border-color: #E34594">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+
+  <!-- for body content -->
+
+
+
+  <div class="row" style="margin-left: 12%; margin-top: 150px" id="bg_image" onclick="close_pop_outside()">
+
+    <div class="col-sm-3">
+      <div>
+        <img src="assets/exclude_cheat.png" alt="Girl in a jacket" width="40%" height="80%"
+          style="margin-top: -180px;margin-left: 13px">
+      </div>
+
+      <img src="assets/menu.png" alt="Girl in a jacket" width="70%">
+    </div>
+
+    <div class="col-sm-8" style="margin-left: -5%">
+      <div style="margin-top: -140px;font-size: 40px;margin-left: 25%">
+        <p style="font-size: 36px;"><b>Tops & Tunics</b></p><br>
+        <p style="font-size: 16px;margin-left: 55px;margin-top: -70px">14379 Products</p>
+      </div>
+      <div style="margin-top: -25px;margin-left: 86.5%;position: absolute;">
+        <img src="assets/grid6.png" alt="Girl in a jacket" width="16px" height="16px"
+          style="margin-left:22px;position: absolute;">
+        <img src="assets/grid4.png" alt="Girl in a jacket" width="16px" height="16px"
+          style="margin-left:0px;position: absolute;">
+        <img src="assets/sort.png" alt="Girl in a jacket" width="25px" height="16px"
+          style="margin-top: 30px;margin-left: 22px;position: absolute;">
+        <p style="font-size: 14px;margin-left: -70px;color: #8F8F8F">Sort by</p>
+        <p style="font-size: 17px;margin-left: -70px;margin-top: -2px">Relevance</p>
+
+      </div>
+
+      <!-- for product grid -->
+      <p id="grid" style="margin-top: 85px;"></p>
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div>
+    <!-- pagination -->
+
+  </div>
+
+  <!-- for the popup -->
+  <p id="pop"></p>
+
+
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <div id="copyright-container">
+      <div id="termsOfUse">
+        <a data-toggle='modal' data-target="#termsofUseModal" tabindex="-1">Terms of Use |</a>
+        <a data-toggle='modal' data-target="#browCompatibility" tabindex="-1">Browser and Display Compatibility</a>
+      </div>
+
+      <div id="copyrightMsg">Copyright &copy; 2019 Tata Consultancy Services <br>
+        Entry to this site is restricted to employees and affiliates.
+      </div>
+    </div>
+  </div>
+
+  <!-- for the RQ change page -->
+  <script>
+
+  </script>
+</body>
+
+</html>

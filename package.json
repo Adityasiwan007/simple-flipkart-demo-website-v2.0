@@ -1,0 +1,18 @@
+{
+  "name": "return_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap-toggle": "^2.2.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "winston": "^3.2.1"
+  }
+}
