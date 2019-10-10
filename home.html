@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <head>
+    <title>Return Quotient</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+    <style>
+      /* line on the home shop now mid page */
+      .line_shopnow {
+        width: 80px;
+        border-bottom: 5px solid black;
+        position: absolute;
+      }
+
+      /* line on the home mid page */
+      .line {
+        width: 152px;
+        border-bottom: 5px solid black;
+        position: absolute;
+      }
+
+      /* for the shadow in nav bar */
+      .one-edge-shadow {
+        box-shadow: 0 8px 6px -6px black;
+      }
+
+      /* /* for new nav login dropdown */
+      @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
+
+      /* Fixed navbar */
+      body {
+        padding-top: 100px;
+      }
+
+      /* General sizing */
+      ul.dropdown-lr {
+        width: 300px;
+      }
+
+      /* mobile fix */
+      @media (max-width: 768px) {
+        .dropdown-lr h3 {
+          color: #eee;
+        }
+
+        .dropdown-lr label {
+          color: #eee;
+        }
+      }
+
+
+      /* for text in nav */
+      .link {
+        margin-top: 17px;
+        background-color: none;
+        color: black;
+      }
+
+      datalist {
+        display: none;
+      }
+
+      /* for searching */
+      .typeahead,
+      .tt-query,
+      .tt-hint {
+        border: 2px solid #CCCCCC;
+        border-radius: 12px;
+        font-size: 16px;
+        /* Set input font size */
+        height: 30px;
+        line-height: 30px;
+        outline: medium none;
+        width: 396px;
+      }
+
+      .typeahead {
+        background-color: #FFFFFF;
+      }
+
+      .typeahead:focus {
+        border: 2px solid #0097CF;
+      }
+
+      .tt-query {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+      }
+
+      .tt-hint {
+        color: #999999;
+      }
+
+      .tt-menu {
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 12px;
+        padding: 8px 0;
+        width: 302px;
+      }
+
+      .tt-suggestion {
+        font-size: 22px;
+        /* Set suggestion dropdown font size */
+        padding: 3px 20px;
+      }
+
+      .tt-suggestion:hover {
+        cursor: pointer;
+        background-color: #0097CF;
+        color: #FFFFFF;
+      }
+
+      .tt-suggestion p {
+        margin: 0;
+      }
+
+      /* for searcing end */
+    </style>
+  </head>
+</head>
+
+<body>
+  <script>
+    document.write(
+      '<script src="http://' +
+      (location.host || "localhost").split(":")[0] +
+      ':35729/livereload.js?snipver=1"></' +
+      "script>"
+    );
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/typeahead.js"></script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      // Defining the local dataset
+      var cars = ['Tops in Ethnic Wear', 'Tops in Western wear', 'Tops', 'Tops for women', 'tote bags', 'Tommy hilfiger watches', '1.5 ton split ac', 'Tops in Fusion Beats', 'Tops in Nauti Nati'];
+
+      // Constructing the suggestion engine
+      var cars = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: cars
+      });
+
+      // Initializing the typeahead
+      $('.typeahead').typeahead({
+        hint: true,
+        highlight: true, /* Enable substring highlighting */
+        minLength: 1 /* Specify minimum characters required for showing result */
+      },
+        {
+          name: 'cars',
+          source: cars
+        });
+    });  
+  </script>
+
+
+
+
+  <!-- <nav class="navbar ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar">ewfwefrf</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Return Quotient</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li>
+            <a>
+              <div class="link">
+                <p>MEN</p>
+              </div>
+            </a>
+          </li>
+          <li><a href="tops.html">
+              <div class="link">
+                <p>WOMEN</p>
+              </div>
+            </a></li>
+          <li>
+            <a>
+              <div class="link">
+                <p>ACCSSORIES</p>
+              </div>
+            </a>
+
+          </li>
+          <li>
+            <a>
+              <div class="link">
+                <p>GIFTS</p>
+              </div>
+            </a>
+
+          </li>
+          <li>
+            <a>
+              <div class="link">
+                <p>LOGIN</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0" style="float:right;padding: 8px;">
+          <input class="form-control mr-sm-2 typeahead tt-query" placeholder="Search" type="text" autocomplete="off"
+            spellcheck="false" />
+          <button onclick="goTops()" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </nav> -->
+  <link href="/animate.css" rel="stylesheet">
+  <nav class="navbar  navbar-fixed-top one-edge-shadow" style="background-color: white;" role="navigation">
+    <!-- <div class="container-fluid" style="margin-left: 20%"> -->
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="home.html"><img src="/assets/logo.png" alt="Girl in a jacket" width="170" height="65"
+            style="margin-top: -3px"></a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" style="margin-top: 2px">
+          <li class="active"><a>
+              <div class="link">
+                <p style="font-size: 18px">MEN</p>
+              </div>
+            </a></li>
+          <li><a href="tops.html">
+              <div class="link">
+                <p style="font-size: 18px">WOMEN</p>
+              </div>
+            </a></li>
+          <li>
+            <a>
+              <div class="link">
+                <p style="font-size: 18px">ACCSSORIES</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a>
+              <div class="link">
+                <p style="font-size: 18px">GIFTS</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- <ul class="nav navbar-nav navbar-right" style="margin-right: 20%"> -->
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <form class="form-inline my-2 my-lg-0 link" style="float:right;margin-top: 22px;margin-right: 105px;">
+              <input class="form-control mr-sm-2 typeahead tt-query" placeholder="Search" type="text" autocomplete="off"
+                spellcheck="false" />
+              <!-- <button onclick="goTops()" class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                </button> -->
+              <img type="submit" onclick="goTops()" src="assets/search.png" alt="Girl in a jacket" width="25"
+                height="28" style="margin-top: 5px">
+
+            </form>
+            <!-- </li>
+          <li class="dropdown">
+            <a href="http://phpoll.com/register" class="dropdown-toggle link" data-toggle="dropdown">Register <span
+                class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-lr animated flipInX" role="menu">
+              <div class="col-lg-12">
+                <div class="text-center">
+                  <h3><b>Register</b></h3>
+                </div>
+                <form id="ajax-register-form" action="http://phpoll.com/register/process" method="post" role="form"
+                  autocomplete="off">
+                  <div class="form-group">
+                    <input type="text" name="username" id="username" tabindex="1" class="form-control"
+                      placeholder="Username" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="email" id="email" tabindex="1" class="form-control"
+                      placeholder="Email Address" value="">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" id="password" tabindex="2" class="form-control"
+                      placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2"
+                      class="form-control" placeholder="Confirm Password">
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-xs-6 col-xs-offset-3">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4"
+                          class="form-control btn btn-info" value="Register Now">
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" class="hide" name="token" id="token" value="7c6f19960d63f53fcd05c3e0cbc434c0">
+                </form>
+              </div>
+            </ul>
+          </li> -->
+
+          <li>
+            <a style="margin-top: 0px;margin-left: -94px;height: 80px;width: 70px">
+              <img src="assets/cart.png" alt="Girl in a jacket" width="42" height="43" style="margin-top: 5px;"></a>
+            </a>
+          </li>
+          <li>
+            <a style=" margin-top: 0px;margin-left: -26px;height: 80px;">
+              <img src="assets/bookmark.png" alt="Girl in a jacket" width="42" height="43" style="margin-top: 5px;"></a>
+            </a>
+          </li>
+          <li>
+            <a href="http://phpoll.com/login" data-toggle="dropdown" style="width: 60px;margin-right: 12px;"> <img
+                id="user" src="assets/user.png" alt="Girl in a jacket" width="42" height="43"
+                style="margin-top: 5px;margin-left: -7px;" onclick="open_drop()"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+  <!-- for the login signin user  -->
+  <div id="login_drop"
+    style="display: none;margin-top:-20px;width: 13%;position: absolute;;z-index: 200;margin-left:87%;background-color: white;padding: 15px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20px;">
+    <div>
+      <h3><b style="color: #E34594">Login</b>
+        <a>
+          <p style="display:inline; margin-left:24px;opacity:0.29;color: black"> Sign
+            up</p>
+        </a>
+      </h3>
+
+    </div>
+    <div class="form-group">
+      <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Email" value=""
+        autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"
+        autocomplete="off">
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-6">
+          <input type="checkbox" tabindex="3" name="remember" id="remember">
+          <label for="remember"> Remember Me</label>
+        </div>
+        <div class="col-xs-6 pull-right">
+          <a class="forgot-password" style="color: #E34594">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <input type="button" onclick="login_fun()" name="login-submit" id="login-submit"
+              class="form-control btn btn-success" value="Log In" style="background: #E34594; border-color: #E34594">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- for the logout format -->
+
+  <div id="login_drop_logout"
+    style="display: none;margin-top:-20px;width: 13%;position: absolute;;z-index: 200;margin-left:87%;background-color: white;padding: 15px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20px;">
+    <div>
+      <h3>
+        <a>
+          <p style="display:inline; margin-left:0px;opacity:1;color: black;font-family: Didot, serif">
+            Hi Emilia</p>
+        </a>
+      </h3>
+    </div>
+
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-xs-6">
+          <input type="checkbox" tabindex="3" name="remember" id="remember">
+          <label for="remember"> Remember Me</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center">
+            <input type="button" onclick="logout_fun()" name="login-submit" id="login-submit"
+              class="form-control btn btn-success" value="Log Out" style="background: #E34594; border-color: #E34594">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div style="margin-top: -20px;">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 1300px">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+
+        <div class="item active">
+          <img id="myImage" src="assets/pink_girl.png" alt="Girl in a jacket"
+            style="margin-top:3%; left: 45%;width: 850px;height: 900px;position: relative;">
+          <div style="color: black;margin-top:-28%;left: 20%;position: absolute;">
+            <p style="font-size: 25px">NEW ARRIVAL</p>
+            <p style="font-size: 88px;margin-top: 58px;font-family: Rubik;">Georgette<br>White Printed<br>Crop
+              Top</p>
+            <b style="font-size: 25px;position:absolute;margin-top: 30px">Shop Now </b>
+            <div class="line_shopnow" style="margin-top: 10.2%;margin-left:32%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img id="myImage" src="assets/blue_girl.png" alt="Girl in a jacket"
+            style="margin-top:3%; left: 45%;width: 900px;height: 900px;position: relative;">
+          <div style="color: black;margin-top:-28%;left: 20%;position: absolute;">
+            <p style="font-size: 25px">Most Featured</p>
+            <p style="font-size: 88px;margin-top: 58px;font-family: Rubik;">Pleated<br>Pink Sleeveless<br>Top</p>
+            <b style="font-size: 25px;position:absolute;margin-top: 30px">Shop Now </b>
+            <div class="line_shopnow" style="margin-top: 10.2%;margin-left:32%">
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img id="myImage" src="assets/login_girl.png" alt="Girl in a jacket"
+            style="margin-top:3%; left: 45%;width: 870px;height: 900px;position: relative;">
+          <div style="color: black;margin-top:-28%;left: 20%;position: absolute;">
+            <p style="font-size: 25px">NEW ARRIVAL</p>
+            <p style="font-size: 88px;margin-top: 58px;font-family: Rubik;">Scoopneck<br>Casual White<br>T shirt</p>
+            <b style="font-size: 25px;position:absolute;margin-top: 30px">Shop Now </b>
+            <div class="line_shopnow" style="margin-top: 10.2%;margin-left:32%">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>About Me</h2>
+        <h5>Photo of me:</h5>
+        <div class="fakeimg">Fake Image</div>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        <h3>Some Links</h3>
+        <p>Lorem ipsum dolor sit ame.</p>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+        </ul>
+        <hr class="hidden-sm hidden-md hidden-lg" />
+      </div>
+      <div class="col-sm-8">
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Dec 7, 2017</h5>
+        <div class="fakeimg">Fake Image</div>
+        <p>Some text..</p>
+        <p>
+          Sunt in culpa qui officia deserunt mollit anim id est laborum
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.
+        </p>
+        <br />
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="fakeimg">Fake Image</div>
+        <p>Some text..</p>
+        <p>
+          Sunt in culpa qui officia deserunt mollit anim id est laborum
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <p id="myText"></p>
+    <p id="myText1"></p>
+  </div> -->
+
+  <script>
+    function goTops() {
+      console.log("Yes clicked");
+      window.open("tops.html");
+      window.close();
+    }
+    function login_fun() {
+      document.getElementById('user').src = 'assets/profile.png'
+      document.getElementById('login_drop').style.display = 'none'
+    }
+    function logout_fun() {
+      document.getElementById('user').src = 'assets/user.png'
+      document.getElementById('login_drop_logout').style.display = 'none'
+    }
+    function open_drop() {
+      if (document.getElementById('user').src == "http://localhost:3001/assets/user.png") {
+        document.getElementById('login_drop').style.display = 'block'
+      }
+      else {
+        document.getElementById('login_drop_logout').style.display = 'block'
+      }
+    }
+
+  </script>
+</body>
+
+</html>
